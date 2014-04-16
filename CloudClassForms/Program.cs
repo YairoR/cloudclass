@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Database.Repositories;
 
 namespace CloudClassForms
 {
@@ -16,7 +17,11 @@ namespace CloudClassForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CloudClassPainter());
+
+            UsersRepository u = new UsersRepository();
+            u.AddUser(null);
+            var d = u.GetUsers(null);
+            MessageBox.Show(d.Count().ToString());
         }
     }
 }
