@@ -1,6 +1,6 @@
 ﻿namespace CloudClassForms
 {
-    partial class Form1
+    partial class CloudClassPainter
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CloudClassPainter));
             this.ButtonPen = new System.Windows.Forms.Button();
             this.ButtonColors = new System.Windows.Forms.Button();
             this.ButtonEraser = new System.Windows.Forms.Button();
@@ -35,33 +36,36 @@
             // 
             // ButtonPen
             // 
-            this.ButtonPen.Location = new System.Drawing.Point(798, 45);
+            this.ButtonPen.Image = ((System.Drawing.Image)(resources.GetObject("ButtonPen.Image")));
+            this.ButtonPen.Location = new System.Drawing.Point(481, 12);
             this.ButtonPen.Name = "ButtonPen";
-            this.ButtonPen.Size = new System.Drawing.Size(75, 23);
+            this.ButtonPen.Size = new System.Drawing.Size(182, 209);
             this.ButtonPen.TabIndex = 1;
-            this.ButtonPen.Text = "button2";
             this.ButtonPen.UseVisualStyleBackColor = true;
             this.ButtonPen.Click += new System.EventHandler(this.ButtonPen_Click);
             // 
             // ButtonColors
             // 
-            this.ButtonColors.Location = new System.Drawing.Point(798, 138);
+            this.ButtonColors.Image = ((System.Drawing.Image)(resources.GetObject("ButtonColors.Image")));
+            this.ButtonColors.Location = new System.Drawing.Point(806, 3);
             this.ButtonColors.Name = "ButtonColors";
-            this.ButtonColors.Size = new System.Drawing.Size(75, 23);
+            this.ButtonColors.Size = new System.Drawing.Size(78, 79);
             this.ButtonColors.TabIndex = 2;
             this.ButtonColors.Text = "buttonColors";
             this.ButtonColors.UseVisualStyleBackColor = true;
+            this.ButtonColors.Click += new System.EventHandler(this.ButtonColors_Click);
             // 
             // ButtonEraser
             // 
-            this.ButtonEraser.Location = new System.Drawing.Point(798, 88);
+            this.ButtonEraser.Location = new System.Drawing.Point(192, 78);
             this.ButtonEraser.Name = "ButtonEraser";
-            this.ButtonEraser.Size = new System.Drawing.Size(75, 23);
+            this.ButtonEraser.Size = new System.Drawing.Size(237, 133);
             this.ButtonEraser.TabIndex = 3;
             this.ButtonEraser.Text = "button3";
             this.ButtonEraser.UseVisualStyleBackColor = true;
+            this.ButtonEraser.Click += new System.EventHandler(this.ButtonEraser_Click);
             // 
-            // Form1
+            // CloudClassPainter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -71,10 +75,12 @@
             this.Controls.Add(this.ButtonColors);
             this.Controls.Add(this.ButtonPen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "CloudClassPainter";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CloudClassPainter_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CloudClassPainter_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CloudClassPainter_MouseUp);
             this.ResumeLayout(false);
 
         }
