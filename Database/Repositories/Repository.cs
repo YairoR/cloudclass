@@ -12,6 +12,11 @@ namespace Database.Repositories
     {
         private SqlConnectionStringBuilder m_sqlConnectionString = new SqlConnectionStringBuilder();
 
+        public Repository()
+        {
+            CreateConnectionString();
+        }
+
         #region Private Methods
 
         private void CreateConnectionString()
@@ -24,7 +29,7 @@ namespace Database.Repositories
             m_sqlConnectionString.Password = "hack2014!";
         }
 
-        private IDbConnection CreateConnection()
+        protected IDbConnection CreateConnection()
         {
             try
             {

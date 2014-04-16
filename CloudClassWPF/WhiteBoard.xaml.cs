@@ -33,7 +33,6 @@ namespace CloudClassWPF
         {
             if (!isClicked)
             {
-                InkCanvas.IsEnabledProperty = true;
                 ButtonPen.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
                 ButtonPen.BorderThickness = new Thickness(4);
 
