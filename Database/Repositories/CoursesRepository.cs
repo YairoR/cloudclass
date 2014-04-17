@@ -14,7 +14,7 @@ namespace Database.Repositories
         /// </summary>
         /// <param name="userName">Filter by user name.</param>
         /// <returns>The users.</returns>
-        public IEnumerable<Course> GetCourse(Guid courseId)
+        public IEnumerable<Course> GetCourse(Guid? courseId)
         {
             using (var conn = CreateConnection())
             {
@@ -24,7 +24,7 @@ namespace Database.Repositories
                     StringBuilder query = new StringBuilder("SELECT * FROM COURSES");
 
                     // Check if we to filter by user name
-                    if (courseId != Guid.Empty)
+                    if (courseId != null)
                     {
                         query.Append(" WHERE course_id = '" + courseId + "'");
                     }

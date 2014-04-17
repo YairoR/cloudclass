@@ -5,9 +5,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Practices;
-using Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure;
-using Microsoft.Practices.TransientFaultHandling;
 
 namespace Database.Repositories
 {
@@ -43,9 +40,6 @@ namespace Database.Repositories
         {
             try
             {
-                var retryStrategy = new ExponentialBackoff(RetryPolicyName, BackoffRetry, s_backOffMin, s_backOffMax, s_backOffDelta, true);
-
-                RetryPolicy retryPolicy = new RetryPolicy<SqlAzureTransientErrorDetectionStrategy>(retryStrategy);
                 var connection = new SqlConnection(m_sqlConnectionString.ToString());
                 connection.Open();
                 return connection;
