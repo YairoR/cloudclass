@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipelineManagment", "Pipeli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSBlobStorage", "ClassLibrary1\CSBlobStorage.csproj", "{925C3201-63F6-4BE5-9375-257D6DF12C0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rectangle", "..\..\..\Documents\Visual Studio 2013\Projects\rectangle\rectangle\rectangle.csproj", "{2DC5BE04-58F7-4888-9F00-4FD11E3167B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{925C3201-63F6-4BE5-9375-257D6DF12C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{925C3201-63F6-4BE5-9375-257D6DF12C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{925C3201-63F6-4BE5-9375-257D6DF12C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DC5BE04-58F7-4888-9F00-4FD11E3167B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DC5BE04-58F7-4888-9F00-4FD11E3167B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DC5BE04-58F7-4888-9F00-4FD11E3167B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DC5BE04-58F7-4888-9F00-4FD11E3167B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +104,6 @@ Global
 		{EA7361FA-39B4-4192-B21E-065018E3F9D3} = {3CB399A4-2C55-4200-BFC9-AE56C702BDDA}
 		{DC8D2341-5DCA-44A2-9C02-302C25ED3CFA} = {101D7ED6-DBF0-4796-A9A7-19307A3EF1F3}
 		{2C04C970-657B-407A-A1C9-90711807C79A} = {8F4F3307-87CA-4319-AE63-8EC590B808BB}
+		{2DC5BE04-58F7-4888-9F00-4FD11E3167B6} = {8F4F3307-87CA-4319-AE63-8EC590B808BB}
 	EndGlobalSection
 EndGlobal
