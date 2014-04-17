@@ -15,6 +15,7 @@ namespace BlobsManager
     {
         CloudBlobClient blobClient;
         private static readonly char specialChar = '_';
+        private static readonly char extensionChar = '.';
 
         public ClassBlob()
         {
@@ -60,9 +61,13 @@ namespace BlobsManager
                 if (item.GetType() == typeof(CloudBlockBlob))
                 {
                     CloudBlockBlob blob = (CloudBlockBlob)item;
-                    int lastIndexOfSpecialChar=blob.Name.LastIndexOf(specialChar);
-                    string blobNameWithoutOwner=blob.Name.Substring(0,lastIndexOfSpecialChar);
-                    string ownerName = blob.Name.Substring(lastIndexOfSpecialChar);
+
+                    int lastIndexOfSpecialChar = blob.Name.LastIndexOf(specialChar);
+                    int lastIndexOfExtensionChar = blob.Name.LastIndexOf(extensionChar);
+
+                    string blobNameWithoutOwner = blob.Name.Substring(0,lastIndexOfSpecialChar);
+                    string ownerName = blob.Name.Substring(lastIndexOfSpecialChar + 1, lastIndexOfExtensionChar - lastIndexOfSpecialChar - 1);
+
                     blobUris.Add(new BlobFileresult(blobNameWithoutOwner, blob.Uri, ownerName, blob.Properties.LastModifiedUtc));
                 }
 
