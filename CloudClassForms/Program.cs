@@ -16,7 +16,7 @@ namespace CloudClassForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CloudClassPainter());
+            Application.Run(new Form2());
         }
     }
 }
