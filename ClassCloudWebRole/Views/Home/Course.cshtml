@@ -2,13 +2,36 @@
     ViewBag.Title = "CloudClass";
 }
 
-<h2>Please select a course from the list:</h2>
+@section scripts
+{
+    <script>
+        $(document).ready(function ()
+        {
+            if ('@ViewBag.isTeacher' == 'False')
+            {
+                $("#manage").css({"display": "none"});
+            }
+        })
+    </script>
+}
 
+<h2>Courses:</h2>
+<button type="button" id="manage" class="btn btn-default">Manage Course</button>
+<br />
+<br />
 <div>
     <table class="table">
         <tr>
-            <th>Course Name</th>
-            <th>Course ID</th>
+            <th>File Name</th>
+            <th>Download</th>
         </tr>
+        @foreach (Orchestration.BlobFileresult blob in ViewBag.courseBlobs)
+        {
+            <tr>
+                <td>@blob.FileName</td>
+                <td><a href="@Html.Raw(blob.AbsoluteUri)">Download File</a></td>
+            </tr>
+        }
     </table>
+
 </div>

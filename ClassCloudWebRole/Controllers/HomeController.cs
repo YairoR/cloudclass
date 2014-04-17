@@ -53,7 +53,7 @@ namespace ClassCloudWebRole.Controllers
         {
             ViewBag.isTeacher = m_CurrentUser == null ? false : m_CurrentUser.IsTeacher;
             ViewBag.Message = "Course page.";
-            string courseId = Request["courseId"];
+            ViewBag.courseBlobs = m_ClientActions.getAllBlobsUnderCourse(Guid.Parse(Request["courseId"]));
 
             return View();
         }

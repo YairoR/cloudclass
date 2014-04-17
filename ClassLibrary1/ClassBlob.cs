@@ -49,6 +49,13 @@ namespace BlobsManager
         {
             List<BlobFileresult> blobUris = new List<BlobFileresult>();
             CloudBlobContainer container = blobClient.GetContainerReference(courseId.ToString());
+            if (container.CreateIfNotExist())
+            {
+                BlobContainerPermissions containerPermissions = new BlobContainerPermissions();
+                containerPermissions.PublicAccess = BlobContainerPublicAccessType.Container;
+                container.SetPermissions(containerPermissions);
+            }
+
             // Loop over items within the container and output the length and URI.
             foreach (IListBlobItem item in container.ListBlobs())
             {
