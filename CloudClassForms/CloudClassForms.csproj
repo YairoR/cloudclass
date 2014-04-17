@@ -78,6 +78,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClientActions\ClientActions.csproj">
+      <Project>{ea7361fa-39b4-4192-b21e-065018e3f9d3}</Project>
+      <Name>ClientActions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Database\Database.csproj">
       <Project>{efe0342f-8cba-4572-85ac-94bd7d6b7515}</Project>
       <Name>Database</Name>

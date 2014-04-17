@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Database.Repositories;
-
+using ClientAction;
+using System.IO;
 namespace CloudClassForms
 {
     static class Program
@@ -15,6 +16,7 @@ namespace CloudClassForms
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -22,6 +24,17 @@ namespace CloudClassForms
             CoursesRepository courseRepo = new CoursesRepository();
             UserCoursesEnrollmentRepository ucer = new UserCoursesEnrollmentRepository();
             TeacherCourseEnrollmentRepository tcer = new TeacherCourseEnrollmentRepository();
+
+            // oded tests
+           // string filePath="C:/123.txt";
+            //string fileName="lecture9";
+            //FileStream fs = File.OpenRead(filePath);
+            //ClientActions ca = new ClientActions();
+            //ca.uploadToBlob(new Guid(), fileName, fs);
+
+
+
+
 
             courseRepo.DeleteCourse(Guid.Parse("024a1b90-24ac-493a-be70-f5fe6a5c0bf4"));
             // Create new user

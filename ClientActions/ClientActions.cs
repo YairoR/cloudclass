@@ -68,9 +68,9 @@ namespace ClientAction
             return m_pipelineManagment.getBlobUri(courseId, blobName);
         }
 
-        public List<BlobFileresult> getBlobsUris(Guid courseId)
+        public List<BlobFileresult> getAllBlobsUnderCourse(Guid courseId)
         {
-            return m_pipelineManagment.getBlobsUris(courseId);
+            return m_pipelineManagment.getAllBlobsUnderCourse(courseId);
         }
     }
 }
