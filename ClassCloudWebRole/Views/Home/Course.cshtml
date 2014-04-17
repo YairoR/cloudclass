@@ -7,7 +7,7 @@
     <script>
         $(document).ready(function ()
         {
-            if ('@ViewBag.isTeacher' == 'False')
+            if ('@ViewBag.isTeacher' == 'True')
             {
                 $("#manage").css({"display": "none"});
             }
@@ -16,7 +16,7 @@
 }
 
 <h2>Courses:</h2>
-<button type="button" id="manage" class="btn btn-default">Manage Course</button>
+<a class="btn" id="manage" href="@Url.Action("CourseManager", "Home")" ">Manage Course</a>
 <br />
 <br />
 <div>
