@@ -15,7 +15,7 @@ namespace rectangle
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WhiteBoard()); 
+            Application.Run(new LoginForm()); 
         }
     }
 }

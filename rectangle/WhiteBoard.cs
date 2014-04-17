@@ -1,27 +1,42 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ClientAction;
 
 namespace rectangle
 {
     public partial class WhiteBoard : Form
     {
-        Bitmap bitmap;
-        Graphics m_graphic;//this class contains methods for drawing shapes and other stuff such as drawLine etc
-        Pen myPen = new Pen(Color.Black, 1);
-        Point ep = new Point(0, 0);
-        Point sp = new Point(0, 0);
-        int k = 0;
+        private Bitmap bitmap;
+        private Graphics m_graphic;//this class contains methods for drawing shapes and other stuff such as drawLine etc
+        private Pen myPen = new Pen(Color.Black, 1);
+        private Point ep = new Point(0, 0);
+        private Point sp = new Point(0, 0);
+        private int k = 0;
+        private Guid m_courseId;
+        private string m_userName;
+        private string m_FolderName = string.Format(@"c:\TempClass\{0}", DateTime.Now);
+        private int m_FileNumber;
+        private readonly ClientActions m_clientActions = new ClientActions();
 
-        public WhiteBoard()
+        // Contains the saves files
+        private List<string> m_filesPath = new List<string>();
+
+        public WhiteBoard(Guid courseId, string userName)
         {
             InitializeComponent();
             bitmap = new Bitmap(this.Width, this.Height);
+            m_courseId = courseId;
+            m_userName = userName;
+            m_FileNumber = 0;
+            m_FolderName = string.Format(@"c:\TempClass\{0}", DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss"));
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -250,12 +265,15 @@ namespace rectangle
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Open file dialog
-            PrintScreenFileDialog.InitialDirectory = "C:";
-            PrintScreenFileDialog.Title = "Choose file name";
-            PrintScreenFileDialog.Filter = "PNG Images|*.png";
+            // Check if we need to create temp file
+            if (!Directory.Exists(m_FolderName))
+            {
+                Directory.CreateDirectory(m_FolderName);
+            }
 
+            string fileName = Path.Combine(m_FolderName, m_FileNumber + ".jpg");
 
+            // Get file name
             using (Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height))
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
@@ -266,14 +284,15 @@ namespace rectangle
                     ShowComponents();
                 }
 
-                var dialogResult = PrintScreenFileDialog.ShowDialog();
-                if (dialogResult != System.Windows.Forms.DialogResult.Cancel)
-                {
-                    bitmap.Save(PrintScreenFileDialog.FileName.ToString(), System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                    MessageBox.Show("פעולה בוצעה בהצלחה!");
-                }
+                bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                MessageBox.Show("פעולה בוצעה בהצלחה!");
             }
+
+            // Add this file path to list
+            m_filesPath.Add(fileName);
+
+            // Increase the file name
+            m_FileNumber++;
         }
 
         private void HideComponents()
@@ -308,6 +327,64 @@ namespace rectangle
         {
             this.Controls.Clear();
             this.InitializeComponent();
+        }
+
+        private void ConvertImagesToPdf()
+        {
+            SautinSoft.PdfVision v = new SautinSoft.PdfVision();
+            v.PageStyle.PageSize.Auto();
+            ArrayList arImageBytes = new ArrayList();
+
+            foreach (var filePath in m_filesPath)
+            {
+                byte[] imageBytes = null;
+                imageBytes = ReadByteArrayFromFile(filePath);
+                if (imageBytes != null)
+                    arImageBytes.Add(imageBytes);
+            }
+            
+            string pdfFile = null;
+
+            //Now the arImageBytes contains byte streams of each image
+            //Lets convert it to PDF stream in memory
+            byte[] pdf = v.ConvertImageStreamArrayToPDFStream(arImageBytes);
+            if (pdf != null)
+            {
+                //Save PDF stream to a file
+                pdfFile = Path.Combine(m_FolderName, "hardcopy.pdf");
+                File.Delete(pdfFile);
+                FileStream fs = File.OpenWrite(pdfFile);
+                fs.Write(pdf, 0, pdf.Length);
+                fs.Close();
+            }
+
+            MessageBox.Show("קובץ PDF נוצר", "נשמר", MessageBoxButtons.OK, MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
+
+            // Open lesson name form
+            LessonNameForm lessonNameForm = new LessonNameForm(pdfFile, m_userName, m_courseId);
+            this.Hide();
+            lessonNameForm.ShowDialog();
+        }
+
+        public static byte[] ReadByteArrayFromFile(string fileName)
+        {
+            byte[] buff = null;
+            try
+            {
+                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                long numBytes = new FileInfo(fileName).Length;
+                buff = br.ReadBytes((int)numBytes);
+            }
+            catch { }
+            return buff;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Create PDF file
+            ConvertImagesToPdf();
         }
     }
 }

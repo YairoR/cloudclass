@@ -34,15 +34,15 @@ namespace rectangle
         {
             
             // Try to get user
-            var user = m_clientActions.GetUsers(TextboxUserName.Text).First();
+            var user = m_clientActions.GetUsers(TextboxUserName.Text);
 
-            if (user == null)
+            if (user == null || !user.Any())
             {
                 MessageBox.Show("שם משתמש לא קיים!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 return false;
             }
 
-            if (!user.IsTeacher)
+            if (!user.First().IsTeacher)
             {
                 MessageBox.Show("עליך להיות מרצה על מנת להיכנס!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 return false;
@@ -67,15 +67,10 @@ namespace rectangle
 
             // Get all teacher courses
             var courses = m_clientActions.GetCoursesForTeacher(TextboxUserName.Text);
-            var chooseCourseForm = new ChooseCourseForm(courses);
+            var chooseCourseForm = new ChooseCourseForm(courses, TextboxUserName.Text);
 
             this.Hide();
             chooseCourseForm.ShowDialog();
-
-            // Load the white board
-            WhiteBoard whiteBoardForm = new WhiteBoard();
-            this.Hide();
-            whiteBoardForm.ShowDialog();
         }
 
         private void ButtonExit_Click(object sender, EventArgs e)

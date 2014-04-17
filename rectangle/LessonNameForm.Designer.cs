@@ -1,6 +1,6 @@
 ﻿namespace rectangle
 {
-    partial class ChooseCourseForm
+    partial class LessonNameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,42 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ListCourses = new System.Windows.Forms.ListBox();
+            this.ButtonSave = new System.Windows.Forms.Button();
+            this.TextBoxLessonName = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // ListCourses
+            // ButtonSave
             // 
-            this.ListCourses.FormattingEnabled = true;
-            this.ListCourses.Location = new System.Drawing.Point(41, 33);
-            this.ListCourses.Name = "ListCourses";
-            this.ListCourses.Size = new System.Drawing.Size(150, 212);
-            this.ListCourses.TabIndex = 0;
-            this.ListCourses.DoubleClick += new System.EventHandler(this.ListCourses_DoubleClick);
+            this.ButtonSave.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonSave.Location = new System.Drawing.Point(174, 80);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(75, 23);
+            this.ButtonSave.TabIndex = 6;
+            this.ButtonSave.Text = "שמור";
+            this.ButtonSave.UseVisualStyleBackColor = true;
+            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
+            // 
+            // TextBoxLessonName
+            // 
+            this.TextBoxLessonName.Location = new System.Drawing.Point(62, 41);
+            this.TextBoxLessonName.Name = "TextBoxLessonName";
+            this.TextBoxLessonName.Size = new System.Drawing.Size(160, 20);
+            this.TextBoxLessonName.TabIndex = 5;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(41, 7);
+            this.textBox1.Location = new System.Drawing.Point(228, 40);
             this.textBox1.Name = "textBox1";
             this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(185, 21);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "בחר אחד מהקורסים שאתה מלמד";
+            this.textBox1.Size = new System.Drawing.Size(140, 21);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "בחר שם לשיעור שהעברת:";
             // 
-            // ChooseCourseForm
+            // LessonNameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(238, 269);
+            this.ClientSize = new System.Drawing.Size(432, 127);
+            this.Controls.Add(this.ButtonSave);
+            this.Controls.Add(this.TextBoxLessonName);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.ListCourses);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ChooseCourseForm";
+            this.Name = "LessonNameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "בחר קורס";
+            this.Text = "בחר שם שיעור";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,7 +81,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox ListCourses;
+        private System.Windows.Forms.Button ButtonSave;
+        private System.Windows.Forms.TextBox TextBoxLessonName;
         private System.Windows.Forms.TextBox textBox1;
     }
 }

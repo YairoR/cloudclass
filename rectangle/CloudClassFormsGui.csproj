@@ -39,6 +39,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SautinSoft.PdfVision">
+      <HintPath>..\..\..\..\Desktop\SautinSoft.PdfVision.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -62,6 +65,12 @@
     <Compile Include="ChooseCourseForm.Designer.cs">
       <DependentUpon>ChooseCourseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LessonNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LessonNameForm.Designer.cs">
+      <DependentUpon>LessonNameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +91,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChooseCourseForm.resx">
       <DependentUpon>ChooseCourseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LessonNameForm.resx">
+      <DependentUpon>LessonNameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
