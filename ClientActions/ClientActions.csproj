@@ -43,6 +43,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CSBlobStorage.csproj">
+      <Project>{925c3201-63f6-4be5-9375-257d6df12c0d}</Project>
+      <Name>CSBlobStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orchestration\Orchestration.csproj">
       <Project>{510d18f7-186e-4374-a0ae-2a5f0da402dc}</Project>
       <Name>Orchestration</Name>

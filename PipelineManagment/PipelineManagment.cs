@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Orchestration;
 using Database.Repositories;
+using BlobsManager;
+using System.IO;
 
 namespace PipelineManagments
 {
@@ -15,6 +17,8 @@ namespace PipelineManagments
         private readonly CoursesRepository m_CoursesRepository = new CoursesRepository();
         private readonly TeacherCourseEnrollmentRepository m_teacherCourseEnrollmentRepository = new TeacherCourseEnrollmentRepository();
         private readonly UserCoursesEnrollmentRepository m_userCourseEnrollmentRepository = new UserCoursesEnrollmentRepository();
+        private readonly ClassBlob m_classBlob = new ClassBlob();
+
 
         public IEnumerable<User> GetUsers(string userName)
         {
@@ -50,7 +54,7 @@ namespace PipelineManagments
         {
             return m_teacherCourseEnrollmentRepository.GetCoursesForTeacher(userName);
         }
-        
+
         public void AddCourseForTeacher(string userName, Guid courseId)
         {
             m_teacherCourseEnrollmentRepository.AddCourseToTeacher(userName, courseId);
@@ -59,6 +63,22 @@ namespace PipelineManagments
         public void DeleteCourse(Guid courseId)
         {
             m_CoursesRepository.DeleteCourse(courseId);
+        }
+
+        public void uploadToBlob(Guid courseId, string fileName, FileStream fileStream)
+        {
+            m_classBlob.uploadToBlob(courseId, fileName, fileStream);
+
+        }
+
+        public string getBlobUri(Guid courseId, string blobName)
+        {
+            return m_classBlob.getBlobUri(courseId, blobName);
+        }
+
+        public List<BlobFileresult> getBlobsUris(Guid courseId)
+        {
+            return m_classBlob.getBlobUri(courseId);
         }
     }
 }

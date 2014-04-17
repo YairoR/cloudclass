@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace Orchestration
 {
-
-    
-
     public class BlobFileresult
     {
         private string m_fileName;

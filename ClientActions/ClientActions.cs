@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PipelineManagments;
 using Orchestration;
+using System.IO;
 
 namespace ClientAction
 {
@@ -55,6 +56,21 @@ namespace ClientAction
         public void DeleteCourse(Guid courseId)
         {
             m_pipelineManagment.DeleteCourse(courseId);
+        }
+
+        public void uploadToBlob(Guid courseId, string fileName, FileStream fileStream)
+        {
+            m_pipelineManagment.uploadToBlob(courseId, fileName, fileStream);
+        }
+
+        public string getBlobUri(Guid courseId, string blobName)
+        {
+            return m_pipelineManagment.getBlobUri(courseId, blobName);
+        }
+
+        public List<BlobFileresult> getBlobsUris(Guid courseId)
+        {
+            return m_pipelineManagment.getBlobsUris(courseId);
         }
     }
 }
