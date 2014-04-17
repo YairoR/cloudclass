@@ -17,7 +17,7 @@ namespace Database.Repositories
                 {
                     // Create query
                     StringBuilder query = new StringBuilder(@"SELECT c.course_id, c.course_name FROM USERS u, COURSES c, 
-TEACHER_COURSE_ENROLLMENT tce where u.user_name = tce.user_name AND c.course_name = tce.course_id AND u.user_name = '" + userName + "'");
+TEACHER_COURSE_ENROLLMENT tce where u.user_name = tce.user_name AND c.course_id = tce.course_id AND u.user_name = '" + userName + "'");
 
                     // Create the sample database
                     command.CommandText = query.ToString();
@@ -28,7 +28,7 @@ TEACHER_COURSE_ENROLLMENT tce where u.user_name = tce.user_name AND c.course_nam
                         {
                             yield return new Course()
                             {
-                                Id = (Guid)reader["course_id"],
+                                Id = Guid.Parse(reader["course_id"].ToString()),
                                 Name = reader["course_name"].ToString().Trim(),
                             };
                         }
