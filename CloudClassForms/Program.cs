@@ -43,6 +43,7 @@ namespace CloudClassForms
             tcer.AddCourseToTeacher("yair4", courseId);
             var courseForTeacher = tcer.GetCoursesForTeacher("yair4");
             MessageBox.Show(courseForTeacher.Count().ToString());
+            Application.Run(new Form2());
         }
     }
 }
