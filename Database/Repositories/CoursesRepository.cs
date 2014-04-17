@@ -73,5 +73,30 @@ namespace Database.Repositories
                 }
             }
         }
+
+        public void DeleteCourse(Guid courseId)
+        {
+            using (var conn = CreateConnection())
+            {
+                using (var command = conn.CreateCommand())
+                {
+                    // Create query
+                    StringBuilder query = new StringBuilder(string.Format("DELETE FROM COURSES WHERE course_id = '" + courseId + "'"));
+
+                    // Create the sample database
+                    command.CommandText = query.ToString();
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        throw new DatabaseException("Failed on deleting course");
+                    }
+
+                    conn.Close();
+                }
+            }
+        }
     }
 }
