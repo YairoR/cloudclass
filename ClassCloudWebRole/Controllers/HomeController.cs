@@ -13,14 +13,24 @@ namespace ClassCloudWebRole.Controllers
     {
         private ClientActions m_ClientActions = new ClientActions();
 
+        private User m_CurrentUser = null;
+
         public ActionResult Index()
         {
-            ViewBag.userCourses = new List<Course>();
-
-            if (!string.IsNullOrEmpty(User.Identity.Name))
+            if (!string.IsNullOrEmpty(User.Identity.Name) && m_CurrentUser == null)
             {
-                ViewBag.userCourses = m_ClientActions.GetCourses();
+                List<User> usersList = m_ClientActions.GetUsers(User.Identity.Name).ToList<User>();
+
+                if (usersList.Count == 0)
+                {
+                    // No such user, create and store in database
+                    m_ClientActions.AddUser(User.Identity.Name, false);
+                }
+
+                m_CurrentUser = m_ClientActions.GetUsers(User.Identity.Name).ElementAt(0);
             }
+
+            ViewBag.userCourses = string.IsNullOrEmpty(User.Identity.Name) ? new List<Course>() : m_ClientActions.GetCourses();
 
             return View();
         }
@@ -41,6 +51,7 @@ namespace ClassCloudWebRole.Controllers
 
         public ActionResult Course()
         {
+            ViewBag.isTeacher = m_CurrentUser == null ? false : m_CurrentUser.IsTeacher;
             ViewBag.Message = "Course page.";
             string courseId = Request["courseId"];
 
