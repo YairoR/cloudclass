@@ -76,9 +76,9 @@ namespace PipelineManagments
             return m_classBlob.getBlobUri(courseId, blobName);
         }
 
-        public List<BlobFileresult> getBlobsUris(Guid courseId)
+        public List<BlobFileresult> getAllBlobsUnderCourse(Guid courseId)
         {
-            return m_classBlob.getBlobUri(courseId);
+            return m_classBlob.getAllBlobsUnderCourse(courseId);
         }
     }
 }

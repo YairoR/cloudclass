@@ -45,7 +45,7 @@ namespace BlobsManager
             return blockBlob.Uri.AbsoluteUri.ToString();
         }
 
-        public List<BlobFileresult> getBlobUri(Guid courseId)
+        public List<BlobFileresult> getAllBlobsUnderCourse(Guid courseId)
         {
             List<BlobFileresult> blobUris = new List<BlobFileresult>();
             CloudBlobContainer container = blobClient.GetContainerReference(courseId.ToString());
