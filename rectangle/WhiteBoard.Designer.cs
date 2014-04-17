@@ -225,10 +225,10 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.orange);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pink);
             this.toolStripContainer1.ContentPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(574, 31);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(574, 56);
             this.toolStripContainer1.ContentPanel.MouseEnter += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseEnter);
             this.toolStripContainer1.ContentPanel.MouseLeave += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseLeave);
-            this.toolStripContainer1.Location = new System.Drawing.Point(1, 686);
+            this.toolStripContainer1.Location = new System.Drawing.Point(420, 704);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(574, 56);
             this.toolStripContainer1.TabIndex = 12;
@@ -238,6 +238,7 @@
             // 
             this.toolStripContainer1.TopToolStripPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.toolStripContainer1.TopToolStripPanel.MouseLeave += new System.EventHandler(this.toolStripContainer1_TopToolStripPanel_MouseLeave);
+            this.toolStripContainer1.TopToolStripPanelVisible = false;
             // 
             // buttonClearAll
             // 
@@ -254,9 +255,12 @@
             // hScrollBar1
             // 
             this.hScrollBar1.Location = new System.Drawing.Point(84, 0);
+            this.hScrollBar1.Maximum = 20;
+            this.hScrollBar1.Minimum = 1;
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(120, 17);
             this.hScrollBar1.TabIndex = 15;
+            this.hScrollBar1.Value = 1;
             this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
             // 
             // buttonGrid
@@ -319,7 +323,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(878, 707);
+            this.button1.Location = new System.Drawing.Point(1000, 727);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 33);
             this.button1.TabIndex = 14;

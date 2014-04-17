@@ -12,8 +12,8 @@ namespace ClassCloudWebRole.Controllers
     public class HomeController : Controller
     {
         private ClientActions m_ClientActions = new ClientActions();
-
         private User m_CurrentUser = null;
+        private string m_CurrentCourse = null;
 
         public ActionResult Index()
         {
@@ -35,25 +35,27 @@ namespace ClassCloudWebRole.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult Course()
         {
             ViewBag.isTeacher = m_CurrentUser == null ? false : m_CurrentUser.IsTeacher;
             ViewBag.Message = "Course page.";
-            ViewBag.courseBlobs = m_ClientActions.getAllBlobsUnderCourse(Guid.Parse(Request["courseId"]));
+            m_CurrentCourse = Request["courseId"];
+            ViewBag.courseBlobs = m_ClientActions.getAllBlobsUnderCourse(Guid.Parse(m_CurrentCourse));
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SaveStudentsToCourse(int[] students)
+        {
+            return View();
+        }
+
+        public ActionResult CourseManager()
+        {
+            ViewBag.Message = "Course Management page.";
+            ViewBag.students = m_ClientActions.GetUsers();
+            ViewBag.courseId = m_CurrentCourse;
 
             return View();
         }
