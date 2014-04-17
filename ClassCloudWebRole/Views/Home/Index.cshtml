@@ -7,12 +7,12 @@
 <div>
     <table class="table">
         <tr>
-            <th>Course</th>
+            <th>Course Name</th>
         </tr>
-            @foreach (string course in ViewBag.userCourses)
+            @foreach (Orchestration.Course course in ViewBag.userCourses)
             {
                 <tr>
-
+                    <td>@Html.ActionLink(course.Name, "Course", "Home", new { courseId = course.Id}, null)</td>
                 </tr>
             }
     </table>
