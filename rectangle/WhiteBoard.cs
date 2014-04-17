@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace rectangle
 {
-    public partial class Form1 : Form
+    public partial class WhiteBoard : Form
     {
         Bitmap bitmap;
         Graphics m_graphic;//this class contains methods for drawing shapes and other stuff such as drawLine etc
@@ -18,11 +18,12 @@ namespace rectangle
         Point sp = new Point(0, 0);
         int k = 0;
 
-        public Form1()
+        public WhiteBoard()
         {
             InitializeComponent();
             bitmap = new Bitmap(this.Width, this.Height);
         }
+
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
 
@@ -39,9 +40,9 @@ namespace rectangle
             if (k == 1)
             {
                 ep = e.Location;
-               // DrawToBitmap(bitmap, new Rectangle())
+                // DrawToBitmap(bitmap, new Rectangle())
                 m_graphic = this.CreateGraphics();
-                m_graphic.DrawEllipse(myPen, sp.X, sp.Y, Math.Abs(sp.X-ep.X), myPen.Width);
+                m_graphic.DrawEllipse(myPen, sp.X, sp.Y, Math.Abs(sp.X - ep.X), myPen.Width);
             }
             sp = ep;
 
@@ -153,17 +154,17 @@ namespace rectangle
 
         private void buttonGrid_Click(object sender, EventArgs e)
         {
-       /*
-            for (int y = 0; y < this.Width; ++y)
-            {
-                g.DrawLine(myPen, 0, y * cellSize, numOfCells * cellSize, y * cellSize);
-            }
+            /*
+                 for (int y = 0; y < this.Width; ++y)
+                 {
+                     g.DrawLine(myPen, 0, y * cellSize, numOfCells * cellSize, y * cellSize);
+                 }
 
-            for (int x = 0; x < numOfCells; ++x)
-            {
-                g.DrawLine(myPenf, x * cellSize, 0, x * cellSize, numOfCells * cellSize);
+                 for (int x = 0; x < numOfCells; ++x)
+                 {
+                     g.DrawLine(myPenf, x * cellSize, 0, x * cellSize, numOfCells * cellSize);
             
-        * */
+             * */
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -194,7 +195,7 @@ namespace rectangle
 
         private void toolStripContainer1_TopToolStripPanel_MouseLeave(object sender, EventArgs e)
         {
-          //  Cursor.Hide();
+            //  Cursor.Hide();
         }
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
@@ -249,11 +250,60 @@ namespace rectangle
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            // Open file dialog
+            PrintScreenFileDialog.InitialDirectory = "C:";
+            PrintScreenFileDialog.Title = "Choose file name";
+            PrintScreenFileDialog.Filter = "PNG Images|*.png";
+
+
+            using (Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height))
             {
-                m_graphic.DrawLine(myPen, i * 20, 0, i * 20, 10 * 20);
-                m_graphic.DrawLine(myPen, 0, i * 20, 10 * 20, i * 20);
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    // Remove all unnecessary items from screen
+                    HideComponents();
+                    g.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
+                    ShowComponents();
+                }
+
+                var dialogResult = PrintScreenFileDialog.ShowDialog();
+                if (dialogResult != System.Windows.Forms.DialogResult.Cancel)
+                {
+                    bitmap.Save(PrintScreenFileDialog.FileName.ToString(), System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                    MessageBox.Show("פעולה בוצעה בהצלחה!");
+                }
             }
+        }
+
+        private void HideComponents()
+        {
+            this.button1.Hide();
+            this.toolStripContainer1.Hide();
+            this.purple.Hide();
+            this.pink.Hide();
+            this.red.Hide();
+            this.white.Hide();
+            this.green.Hide();
+            this.yellow.Hide();
+            this.pictureBox1.Hide();
+            this.pictureBox2.Hide();
+            this.pictureBox3.Hide();
+        }
+
+        private void ShowComponents()
+        {
+            this.button1.Show();
+            this.toolStripContainer1.Show();
+            this.purple.Show();
+            this.pink.Show();
+            this.red.Show();
+            this.white.Show();
+            this.green.Show();
+            this.yellow.Show();
+            this.pictureBox1.Show();
+            this.pictureBox2.Show();
+            this.pictureBox3.Show();
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)
