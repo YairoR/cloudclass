@@ -14,6 +14,7 @@ namespace BlobsManager
     public class ClassBlob
     {
         CloudBlobClient blobClient;
+        private static readonly char specialChar = '_';
 
         public ClassBlob()
         {
@@ -21,7 +22,7 @@ namespace BlobsManager
             blobClient = cloudStorageAccount.CreateCloudBlobClient();
         }
 
-        public void uploadToBlob(Guid courseId, string fileName, FileStream fileStream)
+        public void uploadToBlob(Guid courseId, string fileName,string owner, FileStream fileStream)
         {
             // Retrieve a reference to a container. 
             CloudBlobContainer container = blobClient.GetContainerReference(courseId.ToString());
@@ -31,31 +32,27 @@ namespace BlobsManager
 
             // retrieve reference to the blob
             CloudBlockBlob blob = container.GetBlockBlobReference(fileName);
+            
+            // create name of blob 
+            string blobName = fileName + specialChar + owner;
             blob.UploadFromStream(fileStream);
-
-        }
-
-        public string getBlobUri(Guid courseId, string blobName)
-        {
-            CloudBlobContainer courseContainer = blobClient.GetContainerReference(courseId.ToString());
-
-            // Retrieve reference to a blob named in our container
-            CloudBlockBlob blockBlob = courseContainer.GetBlockBlobReference(blobName);
-
-            return blockBlob.Uri.AbsoluteUri.ToString();
         }
 
         public List<BlobFileresult> getAllBlobsUnderCourse(Guid courseId)
         {
             List<BlobFileresult> blobUris = new List<BlobFileresult>();
             CloudBlobContainer container = blobClient.GetContainerReference(courseId.ToString());
+            container.CreateIfNotExist();
             // Loop over items within the container and output the length and URI.
             foreach (IListBlobItem item in container.ListBlobs())
             {
                 if (item.GetType() == typeof(CloudBlockBlob))
                 {
                     CloudBlockBlob blob = (CloudBlockBlob)item;
-                    blobUris.Add(new Orchestration.BlobFileresult(blob.Name, blob.Uri));
+                    int lastIndexOfSpecialChar=blob.Name.LastIndexOf(specialChar);
+                    string blobNameWithoutOwner=blob.Name.Substring(0,lastIndexOfSpecialChar);
+                    string ownerName = blob.Name.Substring(lastIndexOfSpecialChar);
+                    blobUris.Add(new BlobFileresult(blobNameWithoutOwner, blob.Uri, ownerName, blob.Properties.LastModifiedUtc));
                 }
 
             }

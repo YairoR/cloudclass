@@ -26,11 +26,11 @@ namespace CloudClassForms
             TeacherCourseEnrollmentRepository tcer = new TeacherCourseEnrollmentRepository();
 
             // oded tests
-           // string filePath="C:/123.txt";
-            //string fileName="lecture9";
-            //FileStream fs = File.OpenRead(filePath);
-            //ClientActions ca = new ClientActions();
-            //ca.uploadToBlob(new Guid(), fileName, fs);
+            string filePath="C:/123.txt";
+            string fileName="lecture9";
+            FileStream fs = File.OpenRead(filePath);
+            ClientActions ca = new ClientActions();
+            ca.uploadToBlob(new Guid(), fileName, fs);
 
 
 

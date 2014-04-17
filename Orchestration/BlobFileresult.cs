@@ -8,6 +8,29 @@ namespace Orchestration
 {
     public class BlobFileresult
     {
+        private DateTime m_lastModified;
+
+        public DateTime LastModified
+        {
+            get { return m_lastModified; }
+            set { m_lastModified = value; }
+        }
+        private DateTime m_created;
+
+        public DateTime Created
+        {
+            get { return m_created; }
+            set { m_created = value; }
+        }
+
+        private string m_owner;
+
+        public string Owner
+        {
+            get { return m_owner; }
+            set { m_owner = value; }
+        }
+
         private string m_fileName;
 
         public string FileName
@@ -23,10 +46,13 @@ namespace Orchestration
             set { m_absoluteUri = value; }
         }
 
-        public BlobFileresult(string fileName, Uri absoluteUri)
+        public BlobFileresult(string fileName, Uri absoluteUri,string owner,DateTime lastModified)
         {
             m_fileName = fileName;
             m_absoluteUri = absoluteUri;
+            m_owner = owner;
+            m_lastModified = lastModified;
+
         }
 
     }
