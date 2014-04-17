@@ -10,6 +10,5 @@ namespace Orchestration
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string BlobUri { get; set; }
     }
 }

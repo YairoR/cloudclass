@@ -10,6 +10,13 @@ namespace Database.Repositories
 {
     public class Repository
     {
+        private const string RetryPolicyName = "DefaultRetry";
+        private const int BackoffRetry = 3;
+
+        private static readonly TimeSpan s_backOffMin = TimeSpan.FromSeconds(1);
+        private static readonly TimeSpan s_backOffMax = TimeSpan.FromSeconds(10);
+        private static readonly TimeSpan s_backOffDelta = TimeSpan.FromSeconds(3);
+
         private SqlConnectionStringBuilder m_sqlConnectionString = new SqlConnectionStringBuilder();
 
         public Repository()
@@ -24,7 +31,7 @@ namespace Database.Repositories
             m_sqlConnectionString.DataSource = "pzze5baa7t.database.windows.net,1433";
             m_sqlConnectionString.InitialCatalog = "cloudclass-db";
             m_sqlConnectionString.Encrypt = true;
-            m_sqlConnectionString.TrustServerCertificate = true;
+            m_sqlConnectionString.TrustServerCertificate = false;
             m_sqlConnectionString.UserID = "hackidc";
             m_sqlConnectionString.Password = "hack2014!";
         }

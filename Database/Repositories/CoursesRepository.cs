@@ -1,33 +1,32 @@
-﻿using Orchestration;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Orchestration;
 
 namespace Database.Repositories
 {
-    public class UsersRepository : Repository
+    public class CoursesRepository : Repository
     {
         /// <summary>
         /// Get user from the users table.
         /// </summary>
         /// <param name="userName">Filter by user name.</param>
         /// <returns>The users.</returns>
-        public IEnumerable<User> GetUsers(string userName)
+        public IEnumerable<Course> GetCourse(Guid? courseId)
         {
             using (var conn = CreateConnection())
             {
                 using (var command = conn.CreateCommand())
                 {
                     // Create query
-                    StringBuilder query = new StringBuilder("SELECT * FROM USERS");
-                    
+                    StringBuilder query = new StringBuilder("SELECT * FROM COURSES");
+
                     // Check if we to filter by user name
-                    if (userName != null)
+                    if (courseId != null)
                     {
-                        query.Append(" WHERE user_name = '" + userName + "'");
+                        query.Append(" WHERE course_id = '" + courseId + "'");
                     }
 
                     // Create the sample database
@@ -37,10 +36,10 @@ namespace Database.Repositories
                         // Loop over the results
                         while (reader.Read())
                         {
-                            yield return new User()
+                            yield return new Course()
                             {
-                                UserName = reader["user_name"].ToString().Trim(),
-                                IsTeacher = reader["IsTeacher"].ToString().Equals("0") ? false : true
+                                Id = Guid.Parse(reader["course_id"].ToString()),
+                                Name = reader["course_name"].ToString().Trim(),
                             };
                         }
                     }
@@ -50,19 +49,14 @@ namespace Database.Repositories
             }
         }
 
-        /// <summary>
-        /// Add new user to Users table.
-        /// </summary>
-        /// <param name="userName">The user name - unique.</param>
-        /// <param name="isTeacher">Is this user is teacher.</param>
-        public void AddUser(string userName, bool isTeacher)
+        public void AddCourse(Guid courseId, string courseName)
         {
             using (var conn = CreateConnection())
             {
                 using (var command = conn.CreateCommand())
                 {
                     // Create query
-                    StringBuilder query = new StringBuilder(string.Format("INSERT INTO USERS VALUES ('{0}', {1})", userName, isTeacher ? "1" : "0"));
+                    StringBuilder query = new StringBuilder(string.Format("INSERT INTO COURSES VALUES ('{0}', '{1}')", courseId, courseName));
 
                     // Create the sample database
                     command.CommandText = query.ToString();
@@ -72,7 +66,7 @@ namespace Database.Repositories
                     }
                     catch (InvalidOperationException)
                     {
-                        throw new DatabaseException("Failed on adding new user");
+                        throw new DatabaseException("Failed on creating new course");
                     }
 
                     conn.Close();
