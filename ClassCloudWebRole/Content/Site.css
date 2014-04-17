@@ -43,7 +43,8 @@ input[type="checkbox"].input-validation-error {
 
 .logo-position {
     position: relative;
-    left: 50;
+    left: 900px;
+    top: -850px;
 }
  
 .diy-slideshow{
