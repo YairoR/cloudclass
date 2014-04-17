@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "My Courses";
+}
+
+<h2>Please select a course from the list:</h2>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Course Name</th>
+        </tr>
+        @foreach (Orchestration.Course course in ViewBag.userCourses)
+        {
+            <tr>
+                <td>@Html.ActionLink(course.Name, "Course", "Home", new { courseId = course.Id }, null)</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -240,6 +240,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Course.cshtml" />
     <Content Include="Views\Home\CourseManager.cshtml" />
+    <Content Include="Views\Home\MyCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
