@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using PipelineManagments;
 using Orchestration;
 
-namespace ClientActions
+namespace ClientAction
 {
     public class ClientActions
     {

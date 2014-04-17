@@ -7,8 +7,8 @@
     <ProjectGuid>{EA7361FA-39B4-4192-B21E-065018E3F9D3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClientActions</RootNamespace>
-    <AssemblyName>ClientActions</AssemblyName>
+    <RootNamespace>ClientAction</RootNamespace>
+    <AssemblyName>ClientAction</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
