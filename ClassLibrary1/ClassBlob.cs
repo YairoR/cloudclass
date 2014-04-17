@@ -28,7 +28,12 @@ namespace BlobsManager
             CloudBlobContainer container = blobClient.GetContainerReference(courseId.ToString());
 
             // Create the container if it doesn't already exist.
-            container.CreateIfNotExist();
+            if (container.CreateIfNotExist())
+            {
+                BlobContainerPermissions containerPermissions = new BlobContainerPermissions();
+                containerPermissions.PublicAccess = BlobContainerPublicAccessType.Container;
+                container.SetPermissions(containerPermissions);
+            }
 
             // retrieve reference to the blob
             CloudBlockBlob blob = container.GetBlockBlobReference(fileName);
@@ -42,7 +47,13 @@ namespace BlobsManager
         {
             List<BlobFileresult> blobUris = new List<BlobFileresult>();
             CloudBlobContainer container = blobClient.GetContainerReference(courseId.ToString());
-            container.CreateIfNotExist();
+            if (container.CreateIfNotExist())
+            {
+                BlobContainerPermissions containerPermissions = new BlobContainerPermissions();
+                containerPermissions.PublicAccess = BlobContainerPublicAccessType.Container;
+                container.SetPermissions(containerPermissions);
+            }
+
             // Loop over items within the container and output the length and URI.
             foreach (IListBlobItem item in container.ListBlobs())
             {

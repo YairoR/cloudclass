@@ -65,15 +65,9 @@ namespace PipelineManagments
             m_CoursesRepository.DeleteCourse(courseId);
         }
 
-        public void uploadToBlob(Guid courseId, string fileName, FileStream fileStream)
+        public void uploadToBlob(Guid courseId, string fileName, string owner, FileStream fileStream)
         {
-            m_classBlob.uploadToBlob(courseId, fileName, fileStream);
-
-        }
-
-        public string getBlobUri(Guid courseId, string blobName)
-        {
-            return m_classBlob.getBlobUri(courseId, blobName);
+            m_classBlob.uploadToBlob(courseId, fileName, owner, fileStream);
         }
 
         public List<BlobFileresult> getAllBlobsUnderCourse(Guid courseId)

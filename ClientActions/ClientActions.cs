@@ -58,14 +58,9 @@ namespace ClientAction
             m_pipelineManagment.DeleteCourse(courseId);
         }
 
-        public void uploadToBlob(Guid courseId, string fileName, FileStream fileStream)
+        public void uploadToBlob(Guid courseId, string fileName, string owner, FileStream fileStream)
         {
-            m_pipelineManagment.uploadToBlob(courseId, fileName, fileStream);
-        }
-
-        public string getBlobUri(Guid courseId, string blobName)
-        {
-            return m_pipelineManagment.getBlobUri(courseId, blobName);
+            m_pipelineManagment.uploadToBlob(courseId, fileName, owner, fileStream);
         }
 
         public List<BlobFileresult> getAllBlobsUnderCourse(Guid courseId)

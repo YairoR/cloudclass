@@ -24,12 +24,16 @@
         <tr>
             <th>File Name</th>
             <th>Download</th>
+            <th>Owner</th>
+            <th>Last Modified</th>
         </tr>
         @foreach (Orchestration.BlobFileresult blob in ViewBag.courseBlobs)
         {
             <tr>
                 <td>@blob.FileName</td>
                 <td><a href="@Html.Raw(blob.AbsoluteUri)">Download File</a></td>
+                <td>@blob.Owner</td>
+                <td>@blob.LastModified</td>
             </tr>
         }
     </table>
