@@ -30,7 +30,6 @@ namespace CloudClassForms
             string fileName="lecture9";
             FileStream fs = File.OpenRead(filePath);
             ClientActions ca = new ClientActions();
-            ca.uploadToBlob(new Guid(), fileName, fs);
 
 
 

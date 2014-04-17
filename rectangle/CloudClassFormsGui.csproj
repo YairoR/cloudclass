@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WhiteBoard.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -65,6 +71,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WhiteBoard.resx">
       <DependentUpon>WhiteBoard.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -95,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cross2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientActions\ClientActions.csproj">
+      <Project>{ea7361fa-39b4-4192-b21e-065018e3f9d3}</Project>
+      <Name>ClientActions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
