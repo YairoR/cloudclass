@@ -51,5 +51,10 @@ namespace ClientAction
         {
             m_pipelineManagment.AddCourseForTeacher(userName, courseId);
         }
+
+        public void DeleteCourse(Guid courseId)
+        {
+            m_pipelineManagment.DeleteCourse(courseId);
+        }
     }
 }

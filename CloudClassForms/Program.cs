@@ -23,6 +23,7 @@ namespace CloudClassForms
             UserCoursesEnrollmentRepository ucer = new UserCoursesEnrollmentRepository();
             TeacherCourseEnrollmentRepository tcer = new TeacherCourseEnrollmentRepository();
 
+            courseRepo.DeleteCourse(Guid.Parse("024a1b90-24ac-493a-be70-f5fe6a5c0bf4"));
             // Create new user
             //userRepo.AddUser("yair7", false);
             var user = userRepo.GetUsers("yair4");

@@ -55,5 +55,10 @@ namespace PipelineManagments
         {
             m_teacherCourseEnrollmentRepository.AddCourseToTeacher(userName, courseId);
         }
+
+        public void DeleteCourse(Guid courseId)
+        {
+            m_CoursesRepository.DeleteCourse(courseId);
+        }
     }
 }
