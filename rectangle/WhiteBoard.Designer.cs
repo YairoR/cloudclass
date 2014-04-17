@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WhiteBoard));
             this.red = new System.Windows.Forms.PictureBox();
             this.green = new System.Windows.Forms.PictureBox();
@@ -41,15 +42,18 @@
             this.maroon = new System.Windows.Forms.PictureBox();
             this.purple = new System.Windows.Forms.PictureBox();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttonClearAll = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.buttonGrid = new System.Windows.Forms.PictureBox();
             this.eraserButton = new System.Windows.Forms.PictureBox();
             this.white = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.RecordTimer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.red)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.green)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blue)).BeginInit();
@@ -69,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.white)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // red
@@ -207,6 +212,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.button3);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.button2);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.buttonClearAll);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.button1);
@@ -227,12 +233,12 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.orange);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pink);
             this.toolStripContainer1.ContentPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(688, 56);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(782, 56);
             this.toolStripContainer1.ContentPanel.MouseEnter += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseEnter);
             this.toolStripContainer1.ContentPanel.MouseLeave += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseLeave);
             this.toolStripContainer1.Location = new System.Drawing.Point(420, 704);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(688, 56);
+            this.toolStripContainer1.Size = new System.Drawing.Size(782, 56);
             this.toolStripContainer1.TabIndex = 12;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -241,6 +247,26 @@
             this.toolStripContainer1.TopToolStripPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.toolStripContainer1.TopToolStripPanel.MouseLeave += new System.EventHandler(this.toolStripContainer1_TopToolStripPanel_MouseLeave);
             this.toolStripContainer1.TopToolStripPanelVisible = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(675, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(89, 35);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Start Recording";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(589, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 35);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Save session";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonClearAll
             // 
@@ -253,6 +279,16 @@
             this.buttonClearAll.TabIndex = 17;
             this.buttonClearAll.TabStop = false;
             this.buttonClearAll.Click += new System.EventHandler(this.buttonClearAll_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(486, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 35);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Save this screen";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // hScrollBar1
             // 
@@ -323,25 +359,21 @@
             this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
             this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave_1);
             // 
-            // button1
+            // RecordTimer
             // 
-            this.button1.Location = new System.Drawing.Point(486, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 35);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Save this screen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.RecordTimer.Interval = 500;
+            this.RecordTimer.Tick += new System.EventHandler(this.RecordTimer_Tick);
             // 
-            // button2
+            // pictureBox3
             // 
-            this.button2.Location = new System.Drawing.Point(589, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 35);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Save session";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(1202, 710);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 41);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 14;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // WhiteBoard
             // 
@@ -349,6 +381,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 772);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.toolStripContainer1);
             this.Cursor = System.Windows.Forms.Cursors.Cross;
@@ -381,6 +414,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.white)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -408,6 +442,9 @@
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.PictureBox buttonClearAll;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer RecordTimer;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

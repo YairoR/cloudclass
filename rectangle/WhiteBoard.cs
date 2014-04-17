@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClientAction;
+using Microsoft.Expression.Encoder.ScreenCapture;
 
 namespace rectangle
 {
@@ -22,9 +23,12 @@ namespace rectangle
         private int k = 0;
         private Guid m_courseId;
         private string m_userName;
-        private string m_FolderName = string.Format(@"c:\TempClass\{0}", DateTime.Now);
+        private string m_FolderName;
         private int m_FileNumber;
         private readonly ClientActions m_clientActions = new ClientActions();
+        private bool m_isRecord = false;
+        private ScreenCaptureJob screenCaptureJob = new ScreenCaptureJob();
+        private int m_RecourdCount = 0;
 
         // Contains the saves files
         private List<string> m_filesPath = new List<string>();
@@ -61,11 +65,7 @@ namespace rectangle
                 //m_graphic.DrawEllipse(myPen, sp.X, sp.Y, Math.Abs(sp.X - ep.X), myPen.Width);
             }
             sp = ep;
-
-
         }
-
-
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -182,7 +182,7 @@ namespace rectangle
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Cursor.Hide();
+            button2.Enabled = false;
         }
 
         private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
@@ -291,6 +291,8 @@ namespace rectangle
 
             // Increase the file name
             m_FileNumber++;
+
+            button2.Enabled = true;
         }
 
         private void HideComponents()
@@ -340,7 +342,7 @@ namespace rectangle
                 if (imageBytes != null)
                     arImageBytes.Add(imageBytes);
             }
-            
+
             string pdfFile = null;
 
             //Now the arImageBytes contains byte streams of each image
@@ -354,7 +356,7 @@ namespace rectangle
                 FileStream fs = File.OpenWrite(pdfFile);
                 fs.Write(pdf, 0, pdf.Length);
                 fs.Close();
-            } 
+            }
 
             // Open lesson name form
             LessonNameForm lessonNameForm = new LessonNameForm(pdfFile, m_userName, m_courseId);
@@ -382,6 +384,65 @@ namespace rectangle
         {
             // Create PDF file
             ConvertImagesToPdf();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var recordFullPath = new StringBuilder(m_FolderName + @"\\SessionRecord-" + m_RecourdCount + ".wmv");
+            // Check if we recording or not
+            if (m_isRecord)
+            {
+                RecordTimer.Stop();
+                screenCaptureJob.Stop();
+                var chooseLessonNameForm = new LessonNameForm(recordFullPath.ToString(), m_userName, m_courseId);
+                this.Hide();
+                chooseLessonNameForm.ShowDialog();
+                this.Show();
+                button2.Enabled = true;
+                button1.Enabled = true;
+                m_isRecord = false;
+                button3.Text = "Start Recording!";
+                pictureBox3.Visible = false;
+                m_RecourdCount++;
+                return;
+            }
+            else
+            {
+                button2.Enabled = false;
+                button1.Enabled = false;
+                m_isRecord = true;
+                button3.Text = "Stop Recording!";
+                RecordTimer.Start();
+            }
+            
+            try
+            {
+                Rectangle _screenRectangle = Screen.PrimaryScreen.Bounds;
+                screenCaptureJob.CaptureRectangle = _screenRectangle;
+                screenCaptureJob.ShowFlashingBoundary = true;
+                screenCaptureJob.ScreenCaptureVideoProfile.FrameRate = 20;
+                screenCaptureJob.CaptureMouseCursor = true;
+
+                screenCaptureJob.OutputScreenCaptureFileName = recordFullPath.ToString();
+                if (File.Exists(screenCaptureJob.OutputScreenCaptureFileName))
+                {
+                    File.Delete(screenCaptureJob.OutputScreenCaptureFileName);
+                }
+                screenCaptureJob.Start();
+            }
+            catch (Exception) { }
+        }
+
+        private void RecordTimer_Tick(object sender, EventArgs e)
+        {
+            if (pictureBox3.Visible == true)
+            {
+                pictureBox3.Visible = false;
+            }
+            else
+            {
+                pictureBox3.Visible = true;
+            }
         }
     }
 }

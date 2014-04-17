@@ -105,7 +105,7 @@
             this.Controls.Add(this.TextboxUserName);
             this.MaximizeBox = false;
             this.Name = "LoginForm";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome!";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
