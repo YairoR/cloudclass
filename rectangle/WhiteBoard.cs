@@ -283,7 +283,7 @@ namespace rectangle
                 }
 
                 bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
-                MessageBox.Show("פעולה בוצעה בהצלחה!");
+                MessageBox.Show("Screen saved!", "Operations succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             // Add this file path to list
@@ -354,15 +354,14 @@ namespace rectangle
                 FileStream fs = File.OpenWrite(pdfFile);
                 fs.Write(pdf, 0, pdf.Length);
                 fs.Close();
-            }
-
-            MessageBox.Show("קובץ PDF נוצר", "נשמר", MessageBoxButtons.OK, MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
+            } 
 
             // Open lesson name form
             LessonNameForm lessonNameForm = new LessonNameForm(pdfFile, m_userName, m_courseId);
             this.Hide();
             lessonNameForm.ShowDialog();
+
+            this.Close();
         }
 
         public static byte[] ReadByteArrayFromFile(string fileName)

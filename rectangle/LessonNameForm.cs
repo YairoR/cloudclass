@@ -35,6 +35,10 @@ namespace rectangle
             m_clientActions.uploadToBlob(m_courseId, TextBoxLessonName.Text, m_userName, new FileStream(m_filePath, FileMode.Open));
 
             this.Cursor = Cursors.Default;
+
+            MessageBox.Show("Lecture saved", "Saved", MessageBoxButtons.OK);
+
+            this.Close();
         }
     }
 }

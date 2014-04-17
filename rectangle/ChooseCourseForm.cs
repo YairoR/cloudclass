@@ -31,6 +31,7 @@ namespace rectangle
                 var whiteBoardForm = new WhiteBoard(selectedCourse.Id, m_userName);
                 this.Hide();
                 whiteBoardForm.ShowDialog();
+                this.Close();
             }
         }
     }

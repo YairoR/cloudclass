@@ -71,6 +71,8 @@ namespace rectangle
 
             this.Hide();
             chooseCourseForm.ShowDialog();
+            TextboxUserName.Text = string.Empty;
+            this.Show();
         }
 
         private void ButtonExit_Click(object sender, EventArgs e)

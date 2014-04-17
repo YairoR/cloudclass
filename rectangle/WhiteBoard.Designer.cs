@@ -207,7 +207,9 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.button2);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.buttonClearAll);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.button1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.hScrollBar1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.buttonGrid);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.eraserButton);
@@ -225,12 +227,12 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.orange);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pink);
             this.toolStripContainer1.ContentPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(574, 56);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(688, 56);
             this.toolStripContainer1.ContentPanel.MouseEnter += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseEnter);
             this.toolStripContainer1.ContentPanel.MouseLeave += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseLeave);
             this.toolStripContainer1.Location = new System.Drawing.Point(420, 704);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(574, 56);
+            this.toolStripContainer1.Size = new System.Drawing.Size(688, 56);
             this.toolStripContainer1.TabIndex = 12;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -323,21 +325,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1000, 727);
+            this.button1.Location = new System.Drawing.Point(486, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 33);
+            this.button1.Size = new System.Drawing.Size(97, 35);
             this.button1.TabIndex = 14;
-            this.button1.Text = "שמור מסך";
+            this.button1.Text = "Save this screen";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(638, 707);
+            this.button2.Location = new System.Drawing.Point(589, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 35);
+            this.button2.Size = new System.Drawing.Size(80, 35);
             this.button2.TabIndex = 15;
-            this.button2.Text = "button2";
+            this.button2.Text = "Save session";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -347,8 +349,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 772);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.toolStripContainer1);
             this.Cursor = System.Windows.Forms.Cursors.Cross;

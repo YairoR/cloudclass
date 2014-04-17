@@ -36,11 +36,12 @@ namespace BlobsManager
                 container.SetPermissions(containerPermissions);
             }
 
-            // retrieve reference to the blob
-            CloudBlockBlob blob = container.GetBlockBlobReference(fileName);
-            
             // create name of blob 
-            string blobName = fileName + specialChar + owner;
+            string blobName = new StringBuilder(fileName + specialChar + owner + Path.GetExtension(fileStream.Name)).ToString();
+
+            // retrieve reference to the blob
+            CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
+
             blob.UploadFromStream(fileStream);
         }
 

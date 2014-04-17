@@ -30,50 +30,50 @@
         {
             this.ButtonSave = new System.Windows.Forms.Button();
             this.TextBoxLessonName = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonSave
             // 
             this.ButtonSave.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonSave.Location = new System.Drawing.Point(174, 80);
+            this.ButtonSave.Location = new System.Drawing.Point(181, 79);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(75, 23);
             this.ButtonSave.TabIndex = 6;
-            this.ButtonSave.Text = "שמור";
+            this.ButtonSave.Text = "Save!";
             this.ButtonSave.UseVisualStyleBackColor = true;
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // TextBoxLessonName
             // 
-            this.TextBoxLessonName.Location = new System.Drawing.Point(62, 41);
+            this.TextBoxLessonName.Location = new System.Drawing.Point(208, 37);
             this.TextBoxLessonName.Name = "TextBoxLessonName";
             this.TextBoxLessonName.Size = new System.Drawing.Size(160, 20);
             this.TextBoxLessonName.TabIndex = 5;
             // 
-            // textBox1
+            // label1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(228, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(140, 21);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "בחר שם לשיעור שהעברת:";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(53, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 16);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Choose session name:";
             // 
             // LessonNameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(432, 127);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.TextBoxLessonName);
-            this.Controls.Add(this.textBox1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LessonNameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "בחר שם שיעור";
+            this.Text = "Save your lesson!";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +83,6 @@
 
         private System.Windows.Forms.Button ButtonSave;
         private System.Windows.Forms.TextBox TextBoxLessonName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
