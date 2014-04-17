@@ -40,7 +40,7 @@ namespace Database.Repositories
                             yield return new User()
                             {
                                 UserName = reader["user_name"].ToString().Trim(),
-                                IsTeacher = reader["IsTeacher"].ToString().Equals("0") ? false : true
+                                IsTeacher = Convert.ToBoolean(reader["IsTeacher"].ToString())
                             };
                         }
                     }

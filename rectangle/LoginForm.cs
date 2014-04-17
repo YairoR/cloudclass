@@ -44,7 +44,7 @@ namespace rectangle
 
             if (!user.IsTeacher)
             {
-                MessageBox.Show("עלייך להיות מרצה על מנת להיכנס!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                MessageBox.Show("עליך להיות מרצה על מנת להיכנס!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 return false;
             }
             
@@ -64,7 +64,18 @@ namespace rectangle
             {
                 return;
             }
-            
+
+            // Get all teacher courses
+            var courses = m_clientActions.GetCoursesForTeacher(TextboxUserName.Text);
+            var chooseCourseForm = new ChooseCourseForm(courses);
+
+            this.Hide();
+            chooseCourseForm.ShowDialog();
+
+            // Load the white board
+            WhiteBoard whiteBoardForm = new WhiteBoard();
+            this.Hide();
+            whiteBoardForm.ShowDialog();
         }
 
         private void ButtonExit_Click(object sender, EventArgs e)

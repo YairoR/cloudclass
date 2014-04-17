@@ -288,7 +288,6 @@ namespace rectangle
             this.yellow.Hide();
             this.pictureBox1.Hide();
             this.pictureBox2.Hide();
-            this.pictureBox3.Hide();
         }
 
         private void ShowComponents()
@@ -303,7 +302,6 @@ namespace rectangle
             this.yellow.Show();
             this.pictureBox1.Show();
             this.pictureBox2.Show();
-            this.pictureBox3.Show();
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)

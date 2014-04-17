@@ -39,16 +39,17 @@
             // 
             // TextboxUserName
             // 
+            this.TextboxUserName.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextboxUserName.Location = new System.Drawing.Point(208, 47);
             this.TextboxUserName.Name = "TextboxUserName";
-            this.TextboxUserName.Size = new System.Drawing.Size(100, 20);
+            this.TextboxUserName.Size = new System.Drawing.Size(100, 21);
             this.TextboxUserName.TabIndex = 0;
             // 
             // ButtonEnter
             // 
             this.ButtonEnter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ButtonEnter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonEnter.Location = new System.Drawing.Point(246, 98);
+            this.ButtonEnter.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonEnter.Location = new System.Drawing.Point(258, 101);
             this.ButtonEnter.Name = "ButtonEnter";
             this.ButtonEnter.Size = new System.Drawing.Size(77, 28);
             this.ButtonEnter.TabIndex = 1;
@@ -59,8 +60,8 @@
             // ButtonExit
             // 
             this.ButtonExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ButtonExit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonExit.Location = new System.Drawing.Point(165, 98);
+            this.ButtonExit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonExit.Location = new System.Drawing.Point(177, 101);
             this.ButtonExit.Name = "ButtonExit";
             this.ButtonExit.Size = new System.Drawing.Size(77, 28);
             this.ButtonExit.TabIndex = 2;
@@ -70,10 +71,10 @@
             // 
             // TxtUserName
             // 
-            this.TxtUserName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtUserName.Location = new System.Drawing.Point(314, 42);
+            this.TxtUserName.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtUserName.Location = new System.Drawing.Point(314, 46);
             this.TxtUserName.Name = "TxtUserName";
-            this.TxtUserName.Size = new System.Drawing.Size(101, 25);
+            this.TxtUserName.Size = new System.Drawing.Size(90, 25);
             this.TxtUserName.TabIndex = 3;
             this.TxtUserName.Text = "שם משתמש:";
             // 
@@ -101,6 +102,7 @@
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ברוך הבא!";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

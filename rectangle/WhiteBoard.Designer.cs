@@ -49,7 +49,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.PrintScreenFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.red)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.green)).BeginInit();
@@ -70,7 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.white)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // red
@@ -329,27 +327,18 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(655, 261);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(261, 156);
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // Form1
+            // WhiteBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 772);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.toolStripContainer1);
             this.Cursor = System.Windows.Forms.Cursors.Cross;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "WhiteBoard";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -377,7 +366,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.white)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -404,7 +392,6 @@
         private System.Windows.Forms.PictureBox buttonGrid;
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.PictureBox buttonClearAll;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.SaveFileDialog PrintScreenFileDialog;
     }
 }
