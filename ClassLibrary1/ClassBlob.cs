@@ -19,10 +19,10 @@ namespace BlobsManager
             blobClient = cloudStorageAccount.CreateCloudBlobClient();
         }
 
-        public void uploadToBlob(string courseId,string fileName,FileStream fileStream)
+        public void uploadToBlob(Guid courseId, string fileName, FileStream fileStream)
         {
            // Retrieve a reference to a container. 
-            CloudBlobContainer container = blobClient.GetContainerReference(courseId);
+            CloudBlobContainer container = blobClient.GetContainerReference(courseId.ToString());
 
             // Create the container if it doesn't already exist.
             container.CreateIfNotExist();
@@ -33,16 +33,15 @@ namespace BlobsManager
 
         }
 
-        public string getBlobUri(string courseId,string blobName)
+        public string getBlobUri(Guid courseId, string blobName)
         {
-            CloudBlobContainer courseContainer = blobClient.GetContainerReference(courseId);
+            CloudBlobContainer courseContainer = blobClient.GetContainerReference(courseId.ToString());
 
             // Retrieve reference to a blob named in our container
             CloudBlockBlob blockBlob = courseContainer.GetBlockBlobReference(blobName);
 
            return blockBlob.Uri.AbsoluteUri.ToString();
         }
-
         }
     }
 
