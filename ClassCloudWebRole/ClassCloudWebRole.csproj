@@ -240,6 +240,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Course.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -250,6 +251,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientActions\ClientActions.csproj">
+      <Project>{ea7361fa-39b4-4192-b21e-065018e3f9d3}</Project>
+      <Name>ClientActions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchestration\Orchestration.csproj">
+      <Project>{510d18f7-186e-4374-a0ae-2a5f0da402dc}</Project>
+      <Name>Orchestration</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
