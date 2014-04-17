@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipelineManagment", "Pipeli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSBlobStorage", "ClassLibrary1\CSBlobStorage.csproj", "{925C3201-63F6-4BE5-9375-257D6DF12C0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rectangle", "..\..\..\Documents\Visual Studio 2013\Projects\rectangle\rectangle\rectangle.csproj", "{2DC5BE04-58F7-4888-9F00-4FD11E3167B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rectangle", "rectangle\rectangle.csproj", "{2DC5BE04-58F7-4888-9F00-4FD11E3167B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

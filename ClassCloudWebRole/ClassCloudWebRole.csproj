@@ -253,6 +253,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CSBlobStorage.csproj">
+      <Project>{925c3201-63f6-4be5-9375-257d6df12c0d}</Project>
+      <Name>CSBlobStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClientActions\ClientActions.csproj">
       <Project>{ea7361fa-39b4-4192-b21e-065018e3f9d3}</Project>
       <Name>ClientActions</Name>
@@ -260,6 +264,10 @@
     <ProjectReference Include="..\Orchestration\Orchestration.csproj">
       <Project>{510d18f7-186e-4374-a0ae-2a5f0da402dc}</Project>
       <Name>Orchestration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PipelineManagment\PipelineManagment.csproj">
+      <Project>{189c44c4-2700-4a66-b37f-b2a6716dffcc}</Project>
+      <Name>PipelineManagment</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
