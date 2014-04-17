@@ -28,7 +28,6 @@ namespace CloudClassForms
             // oded tests
             string filePath="C:/123.txt";
             string fileName="lecture9";
-            FileStream fs = File.OpenRead(filePath);
             ClientActions ca = new ClientActions();
 
 

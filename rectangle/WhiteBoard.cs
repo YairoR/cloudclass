@@ -42,7 +42,8 @@ namespace rectangle
                 ep = e.Location;
                 // DrawToBitmap(bitmap, new Rectangle())
                 m_graphic = this.CreateGraphics();
-                m_graphic.DrawEllipse(myPen, sp.X, sp.Y, Math.Abs(sp.X - ep.X), myPen.Width);
+                m_graphic.DrawLine(myPen, sp, ep);
+                //m_graphic.DrawEllipse(myPen, sp.X, sp.Y, Math.Abs(sp.X - ep.X), myPen.Width);
             }
             sp = ep;
 
@@ -137,9 +138,6 @@ namespace rectangle
         {
             pictureBox2.Image = rectangle.Properties.Resources.cross2;
         }
-
-
-
 
         private void pictureBox2_MouseLeave_1(object sender, EventArgs e)
         {
