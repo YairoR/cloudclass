@@ -44,9 +44,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ClientActions\bin\Debug\ClientAction.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\Desktop\itextsharp.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
     <Reference Include="SautinSoft.PdfVision, Version=4.5.12.5, Culture=neutral, PublicKeyToken=9c847e093dd15dbf, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
