@@ -3,7 +3,7 @@
   <Role name="ClassCloudWebRole">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=cloudclassstorage;AccountKey=cNedBFVd5SE2h4xsesVNraAN08itjeUjddZn7yoB8rYVj5rYAS8j+9cGV37rtk2N92nknjiwx9EgkKf8O8u9Zw==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

@@ -50,7 +50,7 @@
     <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
     <Reference Include="SautinSoft.PdfVision, Version=4.5.12.5, Culture=neutral, PublicKeyToken=9c847e093dd15dbf, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\SautinSoft.PdfVision.dll</HintPath>
+      <HintPath>..\..\..\..\Dropbox\Yair &amp; Nir\SautinSoft.PdfVision.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -75,7 +75,6 @@
     <Compile Include="ChooseCourseForm.Designer.cs">
       <DependentUpon>ChooseCourseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreatePdf.cs" />
     <Compile Include="LessonNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
