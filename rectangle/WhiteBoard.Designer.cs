@@ -236,7 +236,7 @@
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(782, 56);
             this.toolStripContainer1.ContentPanel.MouseEnter += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseEnter);
             this.toolStripContainer1.ContentPanel.MouseLeave += new System.EventHandler(this.toolStripContainer1_ContentPanel_MouseLeave);
-            this.toolStripContainer1.Location = new System.Drawing.Point(420, 704);
+            this.toolStripContainer1.Location = new System.Drawing.Point(67, 12);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(782, 56);
             this.toolStripContainer1.TabIndex = 12;
@@ -306,7 +306,7 @@
             this.buttonGrid.BackColor = System.Drawing.Color.White;
             this.buttonGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGrid.Image = ((System.Drawing.Image)(resources.GetObject("buttonGrid.Image")));
-            this.buttonGrid.Location = new System.Drawing.Point(387, 6);
+            this.buttonGrid.Location = new System.Drawing.Point(386, 6);
             this.buttonGrid.Name = "buttonGrid";
             this.buttonGrid.Size = new System.Drawing.Size(44, 41);
             this.buttonGrid.TabIndex = 16;
@@ -367,7 +367,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1202, 710);
+            this.pictureBox3.Location = new System.Drawing.Point(1161, 191);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 41);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -380,7 +380,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1370, 772);
+            this.ClientSize = new System.Drawing.Size(1110, 347);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.toolStripContainer1);
