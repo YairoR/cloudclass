@@ -11,23 +11,63 @@ namespace ClassCloudWebRole.Controllers
 {
     public class HomeController : Controller
     {
-        private ClientActions m_ClientActions = new ClientActions();
-        private User m_CurrentUser = null;
-        private string m_CurrentCourse = null;
+        private static ClientActions m_ClientActions = new ClientActions();
+        private static User m_CurrentUser = null;
+        private static string m_CurrentCourse = null;
 
         public ActionResult Index()
         {
-            if (!string.IsNullOrEmpty(User.Identity.Name) && m_CurrentUser == null)
+            if (!string.IsNullOrEmpty(User.Identity.Name))
             {
-                List<User> usersList = m_ClientActions.GetUsers(User.Identity.Name).ToList<User>();
-
-                if (usersList.Count == 0)
+                if (m_CurrentUser == null)
                 {
-                    // No such user, create and store in database
-                    m_ClientActions.AddUser(User.Identity.Name, false);
+                    List<User> usersList = m_ClientActions.GetUsers(User.Identity.Name).ToList<User>();
+
+                    if (usersList.Count == 0)
+                    {
+                        // No such user, create and store in database
+                        m_ClientActions.AddUser(User.Identity.Name, false);
+                    }
+
+                    m_CurrentUser = m_ClientActions.GetUsers(User.Identity.Name).ElementAt(0);
+                }
+                else if (!User.Identity.Name.Equals(m_CurrentUser.UserName))
+                {
+                    // Different user, change current user
+                    m_CurrentUser = m_ClientActions.GetUsers(User.Identity.Name).ElementAt(0);
                 }
 
-                m_CurrentUser = m_ClientActions.GetUsers(User.Identity.Name).ElementAt(0);
+
+            }
+
+            ViewBag.userCourses = string.IsNullOrEmpty(User.Identity.Name) ? new List<Course>() : m_ClientActions.GetCourses();
+
+            return View();
+        }
+
+        public ActionResult MyCourses()
+        {
+            if (!string.IsNullOrEmpty(User.Identity.Name))
+            {
+                if (m_CurrentUser == null)
+                {
+                    List<User> usersList = m_ClientActions.GetUsers(User.Identity.Name).ToList<User>();
+
+                    if (usersList.Count == 0)
+                    {
+                        // No such user, create and store in database
+                        m_ClientActions.AddUser(User.Identity.Name, false);
+                    }
+
+                    m_CurrentUser = m_ClientActions.GetUsers(User.Identity.Name).ElementAt(0);
+                }
+                else if (!User.Identity.Name.Equals(m_CurrentUser.UserName))
+                {
+                    // Different user, change current user
+                    m_CurrentUser = m_ClientActions.GetUsers(User.Identity.Name).ElementAt(0);
+                }
+
+
             }
 
             ViewBag.userCourses = string.IsNullOrEmpty(User.Identity.Name) ? new List<Course>() : m_ClientActions.GetCourses();
@@ -40,15 +80,22 @@ namespace ClassCloudWebRole.Controllers
             ViewBag.isTeacher = m_CurrentUser == null ? false : m_CurrentUser.IsTeacher;
             ViewBag.Message = "Course page.";
             m_CurrentCourse = Request["courseId"];
-            ViewBag.courseBlobs = m_ClientActions.getAllBlobsUnderCourse(Guid.Parse(m_CurrentCourse));
+
+
+            ViewBag.courseBlobs = m_CurrentCourse == null ? new List<BlobFileresult>() : m_ClientActions.getAllBlobsUnderCourse(Guid.Parse(m_CurrentCourse));
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult SaveStudentsToCourse(int[] students)
+        public ActionResult SaveStudentsToCourse(string[] students)
         {
-            return View();
+            foreach(string student in students)
+            {
+                m_ClientActions.AddCourseForUser(student, Guid.Parse(m_CurrentCourse));
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult CourseManager()

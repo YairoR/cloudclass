@@ -2,18 +2,75 @@
     ViewBag.Title = "CloudClass";
 }
 
-<h2>Please select a course from the list:</h2>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
 
-<div>
-    <table class="table">
-        <tr>
-            <th>Course Name</th>
-        </tr>
-            @foreach (Orchestration.Course course in ViewBag.userCourses)
-            {
-                <tr>
-                    <td>@Html.ActionLink(course.Name, "Course", "Home", new { courseId = course.Id}, null)</td>
-                </tr>
-            }
-    </table>
+            var counter = 0,
+            $items = $('.diy-slideshow figure'),
+            numItems = $items.length;
+
+            var showCurrent = function () {
+                var itemToShow = Math.abs(counter % numItems);
+                $items.removeClass('show');
+                $items.eq(itemToShow).addClass('show');
+            };
+
+            $('.next').on('click', function () {
+                counter++;
+                showCurrent();
+            });
+
+            $('.prev').on('click', function () {
+                counter--;
+                showCurrent();
+            });
+
+        });
+
+        var counter = 0, // to keep track of current slide
+        $items = $('.diy-slideshow figure'), // a collection of all of the slides, caching for performance
+        numItems = $items.length; // total number of slides
+
+
+        /** this function is what cycles the slides,
+        showing the next or previous slide and hiding all the others **/
+        var showCurrent = function () {
+            // calculates the actual index of the element to show
+            var itemToShow = Math.abs(counter % numItems);
+            // remove .show from whichever element currently has it
+            $items.removeClass('show');
+            // add .show only to the current slide
+            $items.eq(itemToShow).addClass('show');
+        };
+
+        // add click events to prev &amp; next buttons
+        $('.next').on('click', function () {
+            counter++;
+            showCurrent();
+        });
+        $('.prev').on('click', function () {
+            counter--;
+            showCurrent();
+        });
+    </script>
+}
+<div class="jumbotron">
+    <h1>Welcome to Class Cloud!</h1>
+    <p>Move your classroom into the 21st century. <a href="http://www.powtoon.com/account/login/?next=/presentoons/cYnks00W1LE/edit/">Click here to learn more</a>.</p>
 </div>
+<div class="diy-slideshow">
+    <figure class="show">
+        <img src="http://i.imgur.com/iEmKU89.jpg" width="100%" /><figcaption>Writing with the Cloud Class app.</figcaption>
+    </figure>
+    <figure>
+        <img src="http://i.imgur.com/Zecvwuo.jpg" width="100%" /><figcaption>Digital Whiteboard demo.</figcaption>
+    </figure>
+    <figure>
+        <img src="http://i.imgur.com/y2CO3yT.jpg" width="100%" /><figcaption>Saving digital presentations to the cloud.</a>.</figcaption>
+    </figure>
+    <span class="prev">&laquo;</span>
+    <span class="next">&raquo;</span>
+</div>  
+<img src="http://i.imgur.com/dKHULHD.png" alt="Class Cloud" class="logo-position" width="170" height="111">
